@@ -64,7 +64,7 @@ func (uc UserController) CreateUser(w http.ResponseWriter, r *http.Request, p ht
 	u := models.User{}
 	_ = json.NewDecoder(r.Body).Decode(&u)
 	u.Id = bson.NewObjectId()
-	uc.session.DB("mongoapi").C("user").Insert(u)
+	uc.session.DB("mongoapi").C("users").Insert(u)
 	uj, err := json.Marshal(u)
 	if err != nil {
 		fmt.Println(err)

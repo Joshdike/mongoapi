@@ -2,7 +2,6 @@ package main
 
 import (
 	"fmt"
-	"log"
 	"net/http"
 
 	"github.com/Joshdike/mongoapi/controllers"
@@ -22,14 +21,14 @@ func main() {
 
 	fmt.Printf("Starting server at port 8080\n")
 	if err := http.ListenAndServe(":8080", r); err != nil {
-		log.Fatal(err)
+		fmt.Println(err)
 	}
 }
 
 func getSession() *mgo.Session {
 	s, err := mgo.Dial("mongodb://localhost:27017")
 	if err != nil {
-		log.Fatal(err)
+		panic(err)
 	}
 	return s
 }
